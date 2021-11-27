@@ -78,11 +78,9 @@ public class Perspective : Sense
         Vector3 frontRayPoint = transform.position + (transform.forward * ViewDistance);
 
         //Approximate perspective visualization
-        Vector3 leftRayPoint = frontRayPoint;
-        leftRayPoint.x += FieldOfView * 0.5f;
+        Vector3 leftRayPoint = transform.TransformPoint(new Vector3(Mathf.Cos(FieldOfView), 0, Mathf.Sin(FieldOfView)) * ViewDistance);
 
-        Vector3 rightRayPoint = frontRayPoint;
-        rightRayPoint.x -= FieldOfView * 0.5f;
+        Vector3 rightRayPoint = transform.TransformPoint(new Vector3(-Mathf.Cos(FieldOfView), 0, Mathf.Sin(FieldOfView)) * ViewDistance);
 
         Debug.DrawLine(transform.position, frontRayPoint, Color.green);
         Debug.DrawLine(transform.position, leftRayPoint, Color.green);

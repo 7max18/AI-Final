@@ -57,6 +57,14 @@ public class EnemyController : AdvancedFSM
 
     public void GoToNextPoint()
     {
+        // Set the agent to go to the currently selected destination.
+        agent.SetDestination(waypoints[pointIndex].GetComponent<Renderer>().bounds.center + waypoints[pointIndex].transform.forward);
+
+        StartCoroutine(TurnToNextPoint());
+
+        // Choose the next point in the array as the destination
+        pointIndex += pathDirection;
+
         if (pointIndex == waypoints.Length)
         {
             if (pathMode == PathMode.Loop)
@@ -74,14 +82,6 @@ public class EnemyController : AdvancedFSM
             pathDirection = 1;
             pointIndex += pathDirection;
         }
-
-        // Set the agent to go to the currently selected destination.
-        agent.SetDestination(waypoints[pointIndex].GetComponent<Renderer>().bounds.center + waypoints[pointIndex].transform.forward);
-
-        StartCoroutine(TurnToNextPoint());
-
-        // Choose the next point in the array as the destination
-        pointIndex += pathDirection;
     }
 
     public void FaceTarget()
@@ -91,6 +91,8 @@ public class EnemyController : AdvancedFSM
 
     private IEnumerator FaceTargetCoroutine()
     {
+        agent.acceleration = deceleration;
+
         float duration = 1.0f;
 
         for (float t = 0; t < duration; t += Time.deltaTime)
@@ -102,5 +104,7 @@ public class EnemyController : AdvancedFSM
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, t / duration);
             yield return null;
         }
+
+        agent.acceleration = acceleration;
     }
 }

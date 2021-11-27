@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class PatrolState : FSMState
 {
+    private int waypointIndex = 0;
     // Start is called before the first frame update
     public PatrolState()
     {
@@ -15,7 +16,7 @@ public class PatrolState : FSMState
     {
         if(npc.GetComponent<Perspective>().enemySpotted && !player.GetComponent<PlayerController>().hiding)
         {
-            npc.GetComponent<NavMeshAgent>().acceleration = npc.GetComponent<EnemyController>().deceleration;
+            npc.GetComponent<EnemyController>().FaceTarget();
             npc.GetComponent<EnemyController>().PerformTransition(Transition.SawPlayer);
         }
     }
@@ -23,12 +24,13 @@ public class PatrolState : FSMState
     {
         if (!npc.GetComponent<EnemyController>().agent.pathPending && npc.GetComponent<EnemyController>().agent.remainingDistance <= 0.5f)
         {
-            GameObject waypoint = npc.GetComponent<EnemyController>().waypoints[npc.GetComponent<EnemyController>().pointIndex];
+            GameObject waypoint = npc.GetComponent<EnemyController>().waypoints[waypointIndex];
             if (waypoint.CompareTag("Hiding Spot") && player.GetComponent<PlayerController>().hidingSpot == waypoint && player.GetComponent<PlayerController>().hiding)
             {
                 Debug.Log("Player found!");
             }
 
+            waypointIndex = npc.GetComponent<EnemyController>().pointIndex;
             npc.GetComponent<EnemyController>().GoToNextPoint();
         }
     }
