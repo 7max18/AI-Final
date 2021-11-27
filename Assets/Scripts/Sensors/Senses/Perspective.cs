@@ -4,19 +4,21 @@ using System.Collections;
 public class Perspective : Sense
 {
     public int FieldOfView = 45;
-    public int ViewDistance = 100;
+    public int ViewDistance = 5;
 
     private Transform playerTrans;
     private Vector3 rayDirection;
 
-    protected override void Initialise() 
+    public bool enemySpotted;
+
+    protected override void Initialise()
     {
         //set the value for the player transform -- playerTrans is the var name
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-	// Update is called once per frame
-    protected override void UpdateSense() 
+    // Update is called once per frame
+    protected override void UpdateSense()
     {
         //update time passing in var elapsedTime
 
@@ -24,19 +26,23 @@ public class Perspective : Sense
         elapsedTime += Time.deltaTime;
 
         if (elapsedTime >= detectionRate)
+        {
+            enemySpotted = false;
+            elapsedTime = 0.0f;
             DetectAspect();
+        }
     }
 
     //Poll to detect perspective field of view for the AI Character
     void DetectAspect()
     {
-		//var to hold our RaycastHit
-		RaycastHit hit;
-		rayDirection = playerTrans.position - transform.position; //rayDirection set toward player position
+        //var to hold our RaycastHit
+        RaycastHit hit;
+        rayDirection = playerTrans.position - transform.position; //rayDirection set toward player position
 
-		//if the direction angle toward our player is within our FieldOfView from us, then we care
-		if ((Vector3.Angle(rayDirection, transform.forward)) < FieldOfView)
-		{
+        //if the direction angle toward our player is within our FieldOfView from us, then we care
+        if ((Vector3.Angle(rayDirection, transform.forward)) < FieldOfView)
+        {
             // apparently in FoV, now we test if player is within the DISTANCE of sight abilityusing raycast
 
             if (Physics.Raycast(transform.position, rayDirection, out hit, ViewDistance))
@@ -50,6 +56,7 @@ public class Perspective : Sense
                     {
                         //now console out -- Enemy Detected!
                         Debug.Log("Enemy Detected");
+                        enemySpotted = true;
                     }
                 }
             }
@@ -63,7 +70,7 @@ public class Perspective : Sense
     void OnDrawGizmos()
     {
         //if (!debugMode || playerTrans == null)
-		if (playerTrans == null)
+        if (playerTrans == null)
             return;
 
         Debug.DrawLine(transform.position, playerTrans.position, Color.red);

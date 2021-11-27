@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
     private float moveDirectionLR = 0;
     private float moveDirectionUD = 0;
     private Rigidbody rb;
-    private GameObject hidingSpot;
-    private bool inHidingRange = false;
-    private bool hiding = false;
+    [HideInInspector]
+    public GameObject hidingSpot = null;
+    [HideInInspector]
+    public bool hiding = false;
     // Start is called before the first frame update
     void Start()
     {

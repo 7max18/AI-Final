@@ -16,13 +16,6 @@ public enum Transition
     ReachPlayer,
     LostPlayer,
     NoHealth,
-    HalfHealth,
-    ReachRestArea,
-    GotBored,
-    DoneDancing,
-    TakeBreak,
-    BreakOver,
-    Hide
 }
 
 public enum FSMStateID
@@ -32,11 +25,6 @@ public enum FSMStateID
     Chasing,
     Attacking,
     Dead,
-    Retreating,
-    Resting,
-    Dancing,
-    OffDuty,
-    Cloaking
 }
 
 public class AdvancedFSM : FSM 
