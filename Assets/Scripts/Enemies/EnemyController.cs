@@ -8,13 +8,18 @@ public class EnemyController : AdvancedFSM
     public GameObject[] waypoints;
     [HideInInspector]
     public int pointIndex = 0;
-    protected float acceleration;
+    [HideInInspector]
+    public float acceleration;
     public float deceleration = 600f;
     [HideInInspector]
     public NavMeshAgent agent;
+    public float attackCooldownTime = 0;
+    [HideInInspector]
+    public float attackCountdown;
     public PathMode pathMode;
     private int pathDirection = 1;
     private float timeToSearch = 1.0f;
+
 
     //Update each frame
     
@@ -58,7 +63,14 @@ public class EnemyController : AdvancedFSM
     public void GoToNextPoint()
     {
         // Set the agent to go to the currently selected destination.
-        agent.SetDestination(waypoints[pointIndex].GetComponent<Renderer>().bounds.center + waypoints[pointIndex].transform.forward);
+        if(waypoints[pointIndex].CompareTag("Hiding Spot"))
+        {
+            agent.SetDestination(waypoints[pointIndex].GetComponent<Renderer>().bounds.center + waypoints[pointIndex].transform.forward);
+        }
+        else
+        {
+            agent.SetDestination(waypoints[pointIndex].transform.position);
+        }
 
         StartCoroutine(TurnToNextPoint());
 

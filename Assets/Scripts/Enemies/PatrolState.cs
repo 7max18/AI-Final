@@ -22,12 +22,13 @@ public class PatrolState : FSMState
     }
     public override void Act(Transform player, Transform npc)
     {
-        if (!npc.GetComponent<EnemyController>().agent.pathPending && npc.GetComponent<EnemyController>().agent.remainingDistance <= 0.5f)
+        if (!npc.GetComponent<NavMeshAgent>().pathPending && npc.GetComponent<NavMeshAgent>().remainingDistance <= 0.5f)
         {
             GameObject waypoint = npc.GetComponent<EnemyController>().waypoints[waypointIndex];
             if (waypoint.CompareTag("Hiding Spot") && player.GetComponent<PlayerController>().hidingSpot == waypoint && player.GetComponent<PlayerController>().hiding)
             {
                 Debug.Log("Player found!");
+                //Attack (different from attack state?)
             }
 
             waypointIndex = npc.GetComponent<EnemyController>().pointIndex;

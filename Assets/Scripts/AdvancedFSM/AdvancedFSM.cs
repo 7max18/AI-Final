@@ -15,6 +15,7 @@ public enum Transition
     SawPlayer,
     ReachPlayer,
     LostPlayer,
+    PlayerEscaped,
     NoHealth,
 }
 

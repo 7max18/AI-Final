@@ -949,6 +949,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 948201462}
+    - target: {fileID: 558167882, guid: bce10fa9ecf86934fb0a69c1606508a5, type: 3}
+      propertyPath: attackCooldownTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6061525800485532352, guid: bce10fa9ecf86934fb0a69c1606508a5, type: 3}
       propertyPath: ViewDistance
       value: 5

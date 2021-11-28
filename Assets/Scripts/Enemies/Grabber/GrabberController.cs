@@ -35,9 +35,14 @@ public class GrabberController : EnemyController
 
         ChaseState chase = new ChaseState();
         chase.AddTransition(Transition.LostPlayer, FSMStateID.Patrolling);
+        chase.AddTransition(Transition.ReachPlayer, FSMStateID.Attacking);
+
+        AttackState attack = new AttackState();
+        attack.AddTransition(Transition.PlayerEscaped, FSMStateID.Chasing);
 
         AddFSMState(patrol);
         AddFSMState(chase);
+        AddFSMState(attack);
     }
 
     
