@@ -10,8 +10,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     [HideInInspector]
     public GameObject hidingSpot = null;
+    private GameObject targetEnemy = null;
     [HideInInspector]
     public bool hiding = false;
+    [HideInInspector]
+    public bool underAttack = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +71,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Q) && targetEnemy != null && !underAttack)
+        {
+            targetEnemy.GetComponent<EnemyController>().Die();
+        }
+
         Camera.main.transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y, transform.position.z);
     }
 
@@ -78,9 +86,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Hiding Spot"))
+        if (other.CompareTag("Hiding Spot"))
         {
             hidingSpot = other.gameObject;
+        }
+        else if (other.CompareTag("Enemy"))
+        {
+            targetEnemy = other.gameObject;
         }
     }
 
@@ -89,6 +101,10 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Hiding Spot"))
         {
             hidingSpot = null;
+        }
+        else if (other.CompareTag("Enemy"))
+        {
+            targetEnemy = null;
         }
     }
 }

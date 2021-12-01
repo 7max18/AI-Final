@@ -28,7 +28,7 @@ public class AttackState : FSMState
     {
         if(npc.GetComponent<EnemyController>().attackCountdown <= 0)
         {
-            Debug.Log("Player attacked!"); //Just debug until health system implemented
+            player.GetComponent<HealthScript>().damage(10.0f);
             npc.GetComponent<EnemyController>().attackCountdown = npc.GetComponent<EnemyController>().attackCooldownTime;
         }
         else

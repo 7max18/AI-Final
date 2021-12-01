@@ -14,11 +14,11 @@ public class ChaseState : FSMState
     public override void Reason(Transform player, Transform npc)
     {
         float dist = Vector3.Distance(npc.position, npc.GetComponent<NavMeshAgent>().destination);
-        Debug.Log(dist);
 
         if (dist > 6.0f)
         {
             npc.GetComponent<EnemyController>().GoToNextPoint();
+            player.GetComponent<PlayerController>().underAttack = false;
             npc.GetComponent<EnemyController>().PerformTransition(Transition.LostPlayer);
         }
         else if (dist <= 1.5f)
@@ -31,5 +31,6 @@ public class ChaseState : FSMState
     public override void Act(Transform player, Transform npc)
     {
         npc.GetComponent<NavMeshAgent>().SetDestination(player.position);
+        player.GetComponent<PlayerController>().underAttack = true;
     }
 }

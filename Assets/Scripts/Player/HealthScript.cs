@@ -20,6 +20,7 @@ public class HealthScript : MonoBehaviour
     public void damage (float attack)
     {
         health -= attack;
+        Debug.Log(health);
         if (health <= 0)
         {
             //Trigger the death animation
