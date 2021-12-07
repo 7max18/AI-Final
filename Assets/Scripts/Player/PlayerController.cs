@@ -77,6 +77,11 @@ public class PlayerController : MonoBehaviour
         }
 
         Camera.main.transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y, transform.position.z);
+
+        RaycastHit hit;
+        Vector3 groundCheckPos = GetComponent<Collider>().bounds.min;
+        Physics.Raycast(groundCheckPos, Vector3.down, out hit);
+        transform.position = new Vector3(transform.position.x, hit.point.y + 1.5f, transform.position.z);
     }
 
     private void FixedUpdate()
