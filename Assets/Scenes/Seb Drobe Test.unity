@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 3c02b91eb78b7d74397a6c8ef72f6cf6, type: 2}
 --- !u!1 &191278811
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191278811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1361502276}
@@ -172,7 +172,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &424587717
 MeshCollider:
@@ -1031,6 +1031,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoboDude
       objectReference: {fileID: 0}
+    - target: {fileID: 2103759936660895974, guid: 4bdd240b5677cd34b96249bcfd2e0f38, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bdd240b5677cd34b96249bcfd2e0f38, type: 3}
 --- !u!1 &5754182935802546542
@@ -1147,18 +1151,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6696928936047406650
-MonoBehaviour:
+--- !u!195 &6696928936047406650
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6696928936047406649}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19894b9513c48094ab0e03dec3caed1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &6696928936047406651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,12 +1182,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6696928936047406649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d8ca2219d32f9845b9fa246cc714b4f, type: 3}
+  m_Script: {fileID: 11500000, guid: 232f59b8d7fea5849babc86f58a48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTank: {fileID: 3222104507464597969}
-  curState: 0
-  _health: 0
+  waypoints:
+  - {fileID: 1361502275}
+  - {fileID: 1225227659}
+  pointIndex: 0
+  acceleration: 0
+  deceleration: 600
+  agent: {fileID: 0}
+  attackCooldownTime: 0
+  attackCountdown: 0
+  pathMode: 2
 --- !u!1 &7185675448451901269
 GameObject:
   m_ObjectHideFlags: 0

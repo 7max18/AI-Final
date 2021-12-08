@@ -140,7 +140,7 @@ public class SimpleFSM : FSM
             period = Random.Range(3.0f, 5.0f);
         }
         //Find another random patrol point if the current point is reached
-        if (Vector3.Distance(transform.position, destPos) <= 100.0f)
+        if (Vector3.Distance(transform.position, destPos) <= 1.0f)
         {
             print("Reached to the destination point\ncalculating the next point");
             FindNextPoint();
