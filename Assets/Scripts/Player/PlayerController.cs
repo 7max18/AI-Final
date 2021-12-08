@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector3(moveDirectionLR * maxSpeed, 0, moveDirectionUD * maxSpeed);
+        transform.LookAt(transform.position + new Vector3(moveDirectionLR, 0, moveDirectionUD).normalized);
     }
 
     private void OnTriggerEnter(Collider other)

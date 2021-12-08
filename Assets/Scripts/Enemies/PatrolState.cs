@@ -14,10 +14,13 @@ public class PatrolState : FSMState
 
     public override void Reason(Transform player, Transform npc)
     {
-        if(npc.GetComponent<Perspective>().enemySpotted && !player.GetComponent<PlayerController>().hiding)
+        if(npc.GetComponent<Perspective>())
         {
-            npc.GetComponent<EnemyController>().FaceTarget();
-            npc.GetComponent<EnemyController>().PerformTransition(Transition.SawPlayer);
+            if (npc.GetComponent<Perspective>().enemySpotted && !player.GetComponent<PlayerController>().hiding)
+            {
+                npc.GetComponent<EnemyController>().FaceTarget();
+                npc.GetComponent<EnemyController>().PerformTransition(Transition.SawPlayer);
+            }
         }
     }
     public override void Act(Transform player, Transform npc)
