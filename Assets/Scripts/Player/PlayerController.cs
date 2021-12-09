@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public bool hiding = false;
     [HideInInspector]
     public bool underAttack = false;
+    public int keys = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,6 +101,25 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("Enemy"))
         {
             targetEnemy = other.gameObject;
+        }
+
+        else if (other.CompareTag("Key"))
+        {
+            keys = keys + 1;
+            Destroy(other.gameObject);
+        }
+
+        else if (other.CompareTag("Door"))
+        {
+            /*if (keys <= 1)
+            {
+                
+            }
+
+            else if (keys == 2)
+            {
+
+            } */
         }
     }
 
