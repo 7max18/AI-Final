@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool underAttack = false;
     public int keys = 0;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -115,15 +116,15 @@ public class PlayerController : MonoBehaviour
 
         else if (other.CompareTag("Door"))
         {
-            /*if (keys <= 1)
+            if (keys <= 1)
             {
-                
+                animator.Play("Door Open");
             }
 
             else if (keys == 2)
             {
-
-            } */
+                animator.Play("Door Open 2");
+            }
         }
     }
 
