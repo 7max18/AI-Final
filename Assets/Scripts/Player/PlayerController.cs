@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HealthScript))]
 public class PlayerController : MonoBehaviour
 {
     public float maxSpeed = 3.0f;
     private float moveDirectionLR = 0;
     private float moveDirectionUD = 0;
     private Rigidbody rb;
+    private Animator animator;
     [HideInInspector]
     public GameObject hidingSpot = null;
     private GameObject targetEnemy = null;
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -73,6 +76,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && targetEnemy != null && !underAttack)
         {
+            animator.SetTrigger("Attacking");
             targetEnemy.GetComponent<EnemyController>().Die();
         }
 
