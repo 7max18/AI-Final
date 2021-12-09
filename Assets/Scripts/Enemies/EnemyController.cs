@@ -119,4 +119,10 @@ public class EnemyController : AdvancedFSM
 
         agent.acceleration = acceleration;
     }
+
+    public void Die()
+    {
+        //Chance of spawning key upon death
+        Destroy(gameObject);
+    }
 }

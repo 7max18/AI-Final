@@ -11,27 +11,33 @@ public class HealthScript : MonoBehaviour
 
     private bool isPlayer;
 
+    private Animator animator;
+
     private void Start()
     {
-        if (gameObject.tag == "Player") { isPlayer = true; }
+        if (gameObject.tag == "Player") 
+        { 
+            isPlayer = true;
+            animator = GetComponent<Animator>();
+        }
         else { isPlayer = false; }
     }
 
     public void damage (float attack)
     {
         health -= attack;
+        Debug.Log(health);
         if (health <= 0)
         {
             //Trigger the death animation
 
             if (isPlayer == true)
             {
-                //Broadcast a message to the rest of the scene that the player died
-                //Reset the scene after a wait (maybe use an IEnumerator?)
+                animator.SetBool("IsDead", true);
             }
             else
             {
-                //Destroy the character
+                //Destroy the Game Object
             }
         }
     }

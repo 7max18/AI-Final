@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HealthScript))]
 public class PlayerController : MonoBehaviour
 {
     public float maxSpeed = 3.0f;
     private float moveDirectionLR = 0;
     private float moveDirectionUD = 0;
     private Rigidbody rb;
+    private Animator animator;
     [HideInInspector]
     public GameObject hidingSpot = null;
+    private GameObject targetEnemy = null;
     [HideInInspector]
     public bool hiding = false;
+    [HideInInspector]
+    public bool underAttack = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -68,19 +74,35 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Q) && targetEnemy != null && !underAttack)
+        {
+            animator.SetTrigger("Attacking");
+            targetEnemy.GetComponent<EnemyController>().Die();
+        }
+
         Camera.main.transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y, transform.position.z);
+
+        RaycastHit hit;
+        Vector3 groundCheckPos = GetComponent<Collider>().bounds.min;
+        Physics.Raycast(groundCheckPos, Vector3.down, out hit);
+        transform.position = new Vector3(transform.position.x, hit.point.y + 1.5f, transform.position.z);
     }
 
     private void FixedUpdate()
     {
         rb.velocity = new Vector3(moveDirectionLR * maxSpeed, 0, moveDirectionUD * maxSpeed);
+        transform.LookAt(transform.position + new Vector3(moveDirectionLR, 0, moveDirectionUD).normalized);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Hiding Spot"))
+        if (other.CompareTag("Hiding Spot"))
         {
             hidingSpot = other.gameObject;
+        }
+        else if (other.CompareTag("Enemy"))
+        {
+            targetEnemy = other.gameObject;
         }
     }
 
@@ -89,6 +111,10 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Hiding Spot"))
         {
             hidingSpot = null;
+        }
+        else if (other.CompareTag("Enemy"))
+        {
+            targetEnemy = null;
         }
     }
 }
