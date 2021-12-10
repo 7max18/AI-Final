@@ -8,6 +8,11 @@ public class EnemyManager : MonoBehaviour
     public float keyChance = 0.2f;
     public float currentkeyChance;
 
-    public int enemies = Transform.childCount;
+    public int enemies;
+
+    private void Start()
+    {
+       enemies = transform.childCount;
+    }
 
 }

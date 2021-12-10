@@ -18,13 +18,15 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool underAttack = false;
     public int keys = 0;
-
+    private bool moving;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -36,27 +38,33 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 moveDirectionLR = -1;
+                moving = true;
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
                 moveDirectionLR = 1;
+                moving = true;
             }
             else
             {
                 moveDirectionLR = 0;
+                moving = false;
             }
 
             if (Input.GetKey(KeyCode.DownArrow))
             {
                 moveDirectionUD = -1;
+                moving = true;
             }
             else if (Input.GetKey(KeyCode.UpArrow))
             {
                 moveDirectionUD = 1;
+                moving = true;
             }
             else
             {
                 moveDirectionUD = 0;
+                moving = false;
             }
         }
 
@@ -88,7 +96,9 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         Vector3 groundCheckPos = GetComponent<Collider>().bounds.min;
         Physics.Raycast(groundCheckPos, Vector3.down, out hit);
-        transform.position = new Vector3(transform.position.x, hit.point.y + 1.5f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, hit.point.y + 2.5f, transform.position.z);
+
+        UpdateSound();
     }
 
     private void FixedUpdate()
@@ -124,6 +134,18 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("Enemy"))
         {
             targetEnemy = null;
+        }
+    }
+
+    void UpdateSound()
+    {
+        if (moving)
+        {
+            audioSource.mute = false;
+        }
+        else
+        {
+            audioSource.mute = true;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,9 +21,26 @@ public class EnemyController : AdvancedFSM
     private int pathDirection = 1;
     private float timeToSearch = 1.0f;
 
-
     //Update each frame
-    
+    private Action<EventParam> soundAlertListener;
+    public bool listening;
+
+    void Awake()
+    {
+        soundAlertListener = new Action<EventParam>(Alert);
+    }
+
+    void OnEnable()
+    {
+        //Register With Action variable
+        EventManagerDelPara.StartListening("SoundAlert", soundAlertListener);
+    }
+
+    void OnDisable()
+    {
+        //Un-Register With Action variable
+        EventManagerDelPara.StopListening("SoundAlert", soundAlertListener);
+    }
     protected override void FSMUpdate()
     {
         //Check for health
@@ -124,5 +142,15 @@ public class EnemyController : AdvancedFSM
     {
         //Chance of spawning key upon death
         Destroy(gameObject);
+    }
+
+    void Alert(EventParam watchtower)
+    {
+        Debug.Log("test");
+
+        if (CurrentStateID == FSMStateID.Patrolling && listening)
+        {
+            agent.destination = watchtower.transformParam.position;
+        }
     }
 }
