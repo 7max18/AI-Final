@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class OpeningDoors : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Animator anim;
+
+    public int key;
     void Start()
     {
-        
+        anim.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+    void OnTriggerEnter(Collider other)
+    { 
+        if (other.CompareTag("Player"))
+        {
+        key = other.gameObject.GetComponent<PlayerController>().keys;
+        if (key >= 1)
+            {
+                anim.Play("Door Open");
+            }
+
+        if (key >= 2)
+            {
+                anim.Play("Door Open 2");
+            }
+        }
     }
 }

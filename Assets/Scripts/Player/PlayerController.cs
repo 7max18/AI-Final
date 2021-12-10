@@ -113,19 +113,6 @@ public class PlayerController : MonoBehaviour
             keys = keys + 1;
             Destroy(other.gameObject);
         }
-
-        else if (other.CompareTag("Door"))
-        {
-            if (keys <= 1)
-            {
-                animator.Play("Door Open");
-            }
-
-            else if (keys == 2)
-            {
-                animator.Play("Door Open 2");
-            }
-        }
     }
 
     private void OnTriggerExit(Collider other)
