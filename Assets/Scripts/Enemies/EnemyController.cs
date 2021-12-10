@@ -65,7 +65,7 @@ public class EnemyController : AdvancedFSM
         // Set the agent to go to the currently selected destination.
         if(waypoints[pointIndex].CompareTag("Hiding Spot"))
         {
-            agent.SetDestination(waypoints[pointIndex].GetComponent<Renderer>().bounds.center + waypoints[pointIndex].transform.forward);
+            agent.SetDestination(waypoints[pointIndex].GetComponent<Renderer>().bounds.center + waypoints[pointIndex].transform.forward * 2.0f);
         }
         else
         {

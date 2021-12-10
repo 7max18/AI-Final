@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 2292531900153212328}
   - component: {fileID: 558167883}
   - component: {fileID: 6061525800485532352}
+  - component: {fileID: 558167890}
   m_Layer: 0
   m_Name: GrabberEnemyPlaceholder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +114,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -129,12 +130,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f87230ceb1e8e45afe4c61a0b38ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pointIndex: 0
   acceleration: 0
   deceleration: 600
   agent: {fileID: 0}
-  attackCooldownTime: 0
+  attackCooldownTime: 2
   attackCountdown: 0
   pathMode: 2
 --- !u!114 &2292531900153212328
@@ -189,5 +194,18 @@ MonoBehaviour:
   aspectName: 0
   detectionRate: 1
   FieldOfView: 45
-  ViewDistance: 100
+  ViewDistance: 5
   enemySpotted: 0
+--- !u!114 &558167890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096738358220726488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc217aff4afe1044abc328ff39085f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aspectName: 1
