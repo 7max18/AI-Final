@@ -27,12 +27,18 @@ public class EnemyController : AdvancedFSM
     private Action<EventParam> soundAlertListener;
     public bool listening;
     EventParam myparams = default(EventParam);
+    public GameObject GameManager;
+    public EndingController EnCon;
 
     void Awake()
     {
         myparams.gameObjectParam = gameObject;
 
         soundAlertListener = new Action<EventParam>(Alert);
+
+        GameManager = GameObject.FindGameObjectWithTag("GameController");
+        EnCon = GameManager.GetComponent<EndingController>();
+        EnCon.EnemyCount++;
     }
 
     void OnEnable()
@@ -147,7 +153,7 @@ public class EnemyController : AdvancedFSM
     {
         //Chance of spawning key upon death
         EventManagerDelPara.TriggerEvent("Death", myparams);
-        
+        EnCon.EnemyCount--;
         Destroy(gameObject);
     }
 

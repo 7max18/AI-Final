@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 4149689002145748640}
   m_Layer: 0
   m_Name: GruntPlaceholder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,6 +194,8 @@ MonoBehaviour:
   pathMode: 0
   chance: 0
   listening: 0
+  GameManager: {fileID: 0}
+  EnCon: {fileID: 0}
 --- !u!135 &4149689002145748640
 SphereCollider:
   m_ObjectHideFlags: 0

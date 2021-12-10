@@ -216,7 +216,7 @@ Transform:
   m_GameObject: {fileID: 1852868488959559277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 1545795307258209695}
   - {fileID: 7869468192051398891}
@@ -280,6 +280,10 @@ MonoBehaviour:
   attackCooldownTime: 0
   attackCountdown: 0
   pathMode: 2
+  chance: 0
+  listening: 0
+  GameManager: {fileID: 0}
+  EnCon: {fileID: 0}
 --- !u!195 &1852868488959559278
 NavMeshAgent:
   m_ObjectHideFlags: 0

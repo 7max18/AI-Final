@@ -23,6 +23,18 @@ public class HealthScript : MonoBehaviour
         else { isPlayer = false; }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isPlayer == true)
+        {
+            if (collision.gameObject.CompareTag("Enemy") == true)
+            {
+                health--;
+                animator.SetTrigger("Attacked");
+            }
+        }
+    }
+
     public void damage (float attack)
     {
         health -= attack;
