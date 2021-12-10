@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyController : AdvancedFSM
 {
+    private GameObject keyPrefab;
     public GameObject[] waypoints;
     [HideInInspector]
     public int pointIndex = 0;
@@ -20,7 +21,8 @@ public class EnemyController : AdvancedFSM
     public PathMode pathMode;
     private int pathDirection = 1;
     private float timeToSearch = 1.0f;
-
+    private float requiredChance;
+    public float chance;
     //Update each frame
     private Action<EventParam> soundAlertListener;
     public bool listening;
@@ -137,9 +139,15 @@ public class EnemyController : AdvancedFSM
 
         agent.acceleration = acceleration;
     }
-
+    
     public void Die()
     {
+        chance = GetComponent<EnemyManager>().currentkeyChance;
+       requiredChance = UnityEngine.Random.Range(0.0f, 1.0f);
+        if(chance >= requiredChance)
+        {
+            Instantiate(keyPrefab, transform.position, transform.rotation);
+        }
         //Chance of spawning key upon death
         Destroy(gameObject);
     }
