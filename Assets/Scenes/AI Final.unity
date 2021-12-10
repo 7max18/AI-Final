@@ -5320,6 +5320,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3439395246597937850, guid: e18f920a83c172f43822538a6703d902, type: 3}
+      propertyPath: ViewDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5350283770399536275, guid: e18f920a83c172f43822538a6703d902, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
@@ -5332,6 +5336,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 686844916}
+    - target: {fileID: 5350283770399536275, guid: e18f920a83c172f43822538a6703d902, type: 3}
+      propertyPath: pathMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7364509876191623869, guid: e18f920a83c172f43822538a6703d902, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.9
@@ -7565,6 +7573,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3439395246597937850, guid: e18f920a83c172f43822538a6703d902, type: 3}
+      propertyPath: ViewDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5350283770399536275, guid: e18f920a83c172f43822538a6703d902, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
@@ -7585,6 +7597,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 456478351}
+    - target: {fileID: 5350283770399536275, guid: e18f920a83c172f43822538a6703d902, type: 3}
+      propertyPath: pathMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7364509876191623869, guid: e18f920a83c172f43822538a6703d902, type: 3}
       propertyPath: m_LocalPosition.x
       value: -58.9
@@ -15280,6 +15296,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3439395246597937850, guid: e18f920a83c172f43822538a6703d902, type: 3}
+      propertyPath: ViewDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5350283770399536275, guid: e18f920a83c172f43822538a6703d902, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
@@ -15300,6 +15320,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 790613754}
+    - target: {fileID: 5350283770399536275, guid: e18f920a83c172f43822538a6703d902, type: 3}
+      propertyPath: pathMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7364509876191623869, guid: e18f920a83c172f43822538a6703d902, type: 3}
       propertyPath: m_LocalPosition.x
       value: -57.26
@@ -27232,6 +27256,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3439395246597937850, guid: e18f920a83c172f43822538a6703d902, type: 3}
+      propertyPath: ViewDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5350283770399536275, guid: e18f920a83c172f43822538a6703d902, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
@@ -27244,6 +27272,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 58314118}
+    - target: {fileID: 5350283770399536275, guid: e18f920a83c172f43822538a6703d902, type: 3}
+      propertyPath: pathMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7364509876191623869, guid: e18f920a83c172f43822538a6703d902, type: 3}
       propertyPath: m_LocalPosition.x
       value: -104.4
@@ -30968,13 +31000,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073016488}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 27.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!43 &2081379629
 Mesh:
   m_ObjectHideFlags: 0
