@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 558167883}
   - component: {fileID: 6061525800485532352}
   - component: {fileID: 558167890}
+  - component: {fileID: 4350873529120361298}
   m_Layer: 0
   m_Name: GrabberEnemyPlaceholder
   m_TagString: Enemy
@@ -142,6 +143,8 @@ MonoBehaviour:
   attackCooldownTime: 2
   attackCountdown: 0
   pathMode: 2
+  chance: 0
+  listening: 0
 --- !u!114 &2292531900153212328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,3 +212,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aspectName: 1
+--- !u!135 &4350873529120361298
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096738358220726488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}

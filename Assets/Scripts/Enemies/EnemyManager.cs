@@ -1,40 +1,52 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public List<GameObject> enemiesWithKey = new List<GameObject>();
+    public GameObject keyPrefab;
+    private bool keyDropped;
     public float keyChance;
-    public float currentkeyChance;
-    public int enemies;
-    public int curenemies;
+
+    private Action<EventParam> DeathListener;
+
+    void Awake()
+    {
+        DeathListener = new Action<EventParam>(CheckForKey);
+    }
+
+    void OnEnable()
+    {
+        //Register With Action variable
+        EventManagerDelPara.StartListening("Death", DeathListener);
+    }
+
+    void OnDisable()
+    {
+        //Un-Register With Action variable
+        EventManagerDelPara.StopListening("Death", DeathListener);
+    }
 
     private void Start()
     {
-        if(enemies > 1)
-        {
-          keyChance = 0.2f;
-        }
-        else if(enemies == 1)
-        {
-            keyChance = 1.0f;
-        }
-       enemies = transform.childCount;
-        currentkeyChance = keyChance;
+        keyChance = 1.0f / enemiesWithKey.Count;
     }
 
-    private void Update()
+    void CheckForKey(EventParam dyingEnemy)
     {
-        curenemies = transform.childCount;
-    }
-
-    void Probability()
-    {
-        if(enemies < curenemies)
+        if (enemiesWithKey.Contains(dyingEnemy.gameObjectParam) && !keyDropped)
         {
-            currentkeyChance = keyChance + 0.2f;
-            enemies = curenemies;
-            keyChance = currentkeyChance;
+            float randValue = UnityEngine.Random.value;
+
+            if (randValue <= keyChance)
+            {
+                Instantiate(keyPrefab, dyingEnemy.gameObjectParam.transform.position, dyingEnemy.gameObjectParam.transform.rotation);
+                keyDropped = true;
+            }
+
+            enemiesWithKey.Remove(dyingEnemy.gameObjectParam);
         }
     }
       

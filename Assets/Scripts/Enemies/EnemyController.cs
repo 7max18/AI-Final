@@ -26,9 +26,12 @@ public class EnemyController : AdvancedFSM
     //Update each frame
     private Action<EventParam> soundAlertListener;
     public bool listening;
+    EventParam myparams = default(EventParam);
 
     void Awake()
     {
+        myparams.gameObjectParam = gameObject;
+
         soundAlertListener = new Action<EventParam>(Alert);
     }
 
@@ -142,13 +145,9 @@ public class EnemyController : AdvancedFSM
     
     public void Die()
     {
-        chance = GetComponent<EnemyManager>().currentkeyChance;
-       requiredChance = UnityEngine.Random.Range(0.0f, 1.0f);
-        if(chance >= requiredChance)
-        {
-            Instantiate(keyPrefab, transform.position, transform.rotation);
-        }
         //Chance of spawning key upon death
+        EventManagerDelPara.TriggerEvent("Death", myparams);
+        
         Destroy(gameObject);
     }
 

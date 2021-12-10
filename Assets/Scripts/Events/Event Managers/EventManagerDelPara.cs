@@ -96,6 +96,7 @@ public struct EventParam
     public float param3;
     public bool param4;
     public Transform transformParam;
+    public GameObject gameObjectParam;
 }
 
 /*

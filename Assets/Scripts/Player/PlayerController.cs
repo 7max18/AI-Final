@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && targetEnemy != null && !underAttack)
         {
+            Debug.Log("test");
             animator.SetTrigger("Attacking");
             targetEnemy.GetComponent<EnemyController>().Die();
         }
