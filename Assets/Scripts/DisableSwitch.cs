@@ -20,7 +20,7 @@ public class DisableSwitch : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            pairedObject.SetActive(false);
+            Destroy(pairedObject);
         }
     }
 }
