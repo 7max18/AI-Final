@@ -18,9 +18,9 @@ public class DisableSwitch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Destroy(pairedObject);
-        }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Destroy(pairedObject);
+            }
     }
 }
