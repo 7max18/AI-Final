@@ -10,13 +10,13 @@ public class DisableSwitch : MonoBehaviour
 
     private void Start()
     {
-        if (pairedObject = null)
+        if (pairedObject == null)
         {
             Debug.LogError("Error: Please set an object to disable with the switch!");
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
             if (Input.GetKeyDown(KeyCode.E))
             {
