@@ -6975,8 +6975,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17dd3337b64bc074da349174e0cc2bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesWithKey: []
-  keyPrefab: {fileID: 0}
+  enemiesWithKey:
+  - {fileID: 1879165401}
+  - {fileID: 657187007}
+  keyPrefab: {fileID: 6702774676113644909, guid: 5970ca655322deb4ba2fa4090e540430, type: 3}
   keyChance: 0.2
 --- !u!43 &515649926
 Mesh:
@@ -8238,6 +8240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e18f920a83c172f43822538a6703d902, type: 3}
+--- !u!1 &657187007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7809120599062100172, guid: e18f920a83c172f43822538a6703d902, type: 3}
+  m_PrefabInstance: {fileID: 415079235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &661772943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19043,6 +19050,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.09999998
       objectReference: {fileID: 0}
+    - target: {fileID: 8844745117151335264, guid: 0f92e1247e35c264ebea9288a3a670e6, type: 3}
+      propertyPath: hearingRange
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f92e1247e35c264ebea9288a3a670e6, type: 3}
 --- !u!1 &1213303983 stripped
@@ -28688,6 +28699,11 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.5, y: 0.5, z: -0.5}
   m_TimeToStationary: 0.5
+--- !u!1 &1879165401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7809120599062100172, guid: e18f920a83c172f43822538a6703d902, type: 3}
+  m_PrefabInstance: {fileID: 1051853563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1883163348
 PrefabInstance:
   m_ObjectHideFlags: 0
